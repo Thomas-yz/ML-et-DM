@@ -10,7 +10,7 @@ Sw=S1+S2+S3;
 M1=mean(X1); M2=mean(X2); M3=mean(X3);
 Mu=(N1*M1+N2*M2+N3*M3)/(N1+N2+N3);
 Sb=N1*(M1-Mu)'*(M1-Mu)+N2*(M2-Mu)'*(M2-Mu) +N3*(M3-Mu)'*(M3-Mu);
-J=inv(Sw)*Sb;  [V,D]=eig(J);
+J=inv(Sw)*Sb;  [V,D]=eig(J); %#ok<MINV>
 
 subplot(2,2,1)
 plot(A1,A2,'r+');hold on;
@@ -20,23 +20,23 @@ quiver(0,0,V(1,1)*15,V(2,1)*15);hold on;
 quiver(0,0,V(1,2)*10,V(2,2)*10);hold on;
 
 subplot(2,2,3)
-A=X1*V(:,1)*V(:,1)';
-B=X2*V(:,1)*V(:,1)';
-C=X3*V(:,1)*V(:,1)';
-h1=histogram(A(:,1),20);hold on;
+A=X1*V(:,1);
+B=X2*V(:,1);
+C=X3*V(:,1);
+h1=histogram(A,20);hold on;
 h1.FaceColor = 'r';
-h2=histogram(B(:,1),20);hold on;
+h2=histogram(B,20);hold on;
 h2.FaceColor = 'g';
-h3=histogram(C(:,1),20);hold on;
+h3=histogram(C,20);hold on;
 h3.FaceColor = 'b';
 
 subplot(2,2,4)
-A=X1*V(:,2)*V(:,2)';
-B=X2*V(:,2)*V(:,2)';
-C=X3*V(:,2)*V(:,2)';
-h1=histogram(A(:,1),20);hold on;
+A=X1*V(:,2);
+B=X2*V(:,2);
+C=X3*V(:,2);
+h1=histogram(A,20);hold on;
 h1.FaceColor = 'r';
-h2=histogram(B(:,1),20);hold on;
+h2=histogram(B,20);hold on;
 h2.FaceColor = 'g';
-h3=histogram(C(:,1),20);hold on;
+h3=histogram(C,20);hold on;
 h3.FaceColor = 'b';
